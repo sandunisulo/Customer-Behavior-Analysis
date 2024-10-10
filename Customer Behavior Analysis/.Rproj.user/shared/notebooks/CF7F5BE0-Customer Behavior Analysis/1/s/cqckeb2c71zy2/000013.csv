@@ -1,0 +1,2 @@
+"0","table2<- aggregate(Age ~ Location, data = dataset, FUN = mean)"
+"0","table2"

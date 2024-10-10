@@ -1,0 +1,2 @@
+"0","plot3<- ggplot(table2,aes(x=Location,y=Age,color=Location))+ geom_point()"
+"0","plot3"

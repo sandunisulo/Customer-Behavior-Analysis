@@ -1,0 +1,2 @@
+"0","table4<- aggregate(Review.Rating~Category, data = dataset, FUN = mean)"
+"0","table4"

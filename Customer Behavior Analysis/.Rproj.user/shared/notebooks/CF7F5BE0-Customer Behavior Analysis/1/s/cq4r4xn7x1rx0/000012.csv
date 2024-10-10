@@ -1,0 +1,2 @@
+"0","plot2<- ggplot(dataset,aes(x=Color,y=Purchase.Amount..USD.,fill=Color))+geom_boxplot()"
+"0","plot2"

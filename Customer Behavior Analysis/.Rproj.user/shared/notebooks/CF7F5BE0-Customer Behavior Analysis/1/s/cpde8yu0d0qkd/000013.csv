@@ -1,0 +1,2 @@
+"0","numeric_data <- dataset[sapply(dataset, is.numeric)]"
+"0","head(numeric_data)"

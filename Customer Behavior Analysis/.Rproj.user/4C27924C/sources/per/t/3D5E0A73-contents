@@ -1,0 +1,123 @@
+---
+title: "Customer Behavior Analysis"
+author: "Sanduni Rathnapriya"
+date: "2024-10-10"
+output: html_document
+---
+
+Load Data Set
+```{r setup, include=FALSE}
+dataset<- read.csv("F:/Data Analyis/project for interview/New Project/shopping_trends_Updated.csv")
+
+```
+
+Read 1st 5 rows of data set
+```{r setup, include=TRUE}
+head(dataset)
+```
+
+**Descriptive Statistics**
+
+Summery about data set
+```{r}
+summary1<-summary(dataset)
+summary1
+```
+
+#load ggplot library
+```{r warning=FALSE}
+library("ggplot2")
+```
+
+
+How Sales are Distributed according to the age ranges (Also considering gender)
+
+```{r warning=FALSE}
+sales_in_gender<- ggplot(dataset,aes(x=Age,fill = Gender))+geom_histogram(binwidth = 2, position = "stack", color = "black", alpha = 0.7) + labs(title = "Age Distribution", x = "Age", y = "Frequency")
+sales_in_gender
+```
+
+```{r warning=FALSE}
+table1 <- table(dataset$Item.Purchased)
+table1
+```
+Cloth Sizes distributed according to gender
+
+```{r warning=FALSE}
+plot1<- ggplot(dataset, aes(x=Size,fill=Gender))+geom_bar()
+plot1
+```
+Purchasing according to the color
+
+```{r warning=FALSE}
+plot2<- ggplot(dataset,aes(x=Color,y=Purchase.Amount..USD.,fill=Color))+geom_boxplot()
+plot2
+```
+
+Analyze the average age of customers and how it varies by location
+
+```{r warning=FALSE}
+table2<- aggregate(Age ~ Location, data = dataset, FUN = mean)
+table2
+
+```
+
+```{r warning=FALSE}
+plot3<- ggplot(table2,aes(x=Location,y=Age,color=Location))+ geom_point()
+plot3
+```
+
+
+Analyze the average age of customers and how it varies by gender
+
+```{r warning=FALSE}
+table3<- aggregate(Age ~ Gender, data = dataset, FUN = mean) 
+table3
+```
+
+Calculate the average rating and see how it varies by category.
+
+```{r warning=FALSE}
+table4<- aggregate(Review.Rating~Category, data = dataset, FUN = mean)
+table4
+```
+
+
+
+**Correlation Analysis**
+
+#install packages
+
+```{r warning=FALSE}
+install.packages("dplyr")
+
+```
+```{r}
+library(dplyr)
+```
+
+
+```{r warning=FALSE}
+numeric_data <- dataset[sapply(dataset, is.numeric)]
+head(numeric_data)
+
+```
+
+```{r warning=FALSE}
+correlation_matrix <- cor(numeric_data)
+correlation_matrix
+
+```
+
+```{r warning=FALSE}
+corrplot(correlation_matrix, method = "color", type = "upper", 
+         tl.col = "black", tl.srt = 45, addCoef.col = "black")
+
+```
+
+**Regression Analysis**
+
+#Check linearlity
+
+
+
